@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekaaya Creations - Handmade Handicrafts | Paintings, Resin Art & Home Decor</title>
+    <meta name="description" content="Shop unique handcrafted paintings, resin art, and home decor at Ekaaya Creations. Made with love in India.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917440314280?text=Hi%2C%20I%27m%20interested%20in%20your%20handicrafts%21" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 z-50">
+        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl lg:text-3xl font-bold text-purple-600">Ekaaya Creations</h1>
+                <div class="hidden lg:flex flex-1 max-w-2xl mx-8">
+                    <input type="text" id="searchBox" placeholder="Search for handicrafts..." onkeyup="filterProducts()" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 hover:bg-gray-100 rounded-full">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                        <span id="cartCount" class="hidden absolute -top-1 -right-1 bg-purple-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="lg:hidden mt-4">
+                <input type="text" id="searchMobile" placeholder="Search..." onkeyup="filterProducts()" class="w-full px-4 py-2 border rounded-lg">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white py-16 text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-4">Handcrafted with Love</h2>
+        <p class="text-xl mb-6">Unique paintings, resin arts, and home decor pieces</p>
+        <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100">Shop Now</button>
+    </div>
+
+    <!-- About -->
+    <div class="bg-white py-12">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">About Ekaaya Creations</h2>
+            <p class="text-gray-600 leading-relaxed">Welcome to Ekaaya Creations, where every piece tells a story. We create unique, handmade handicrafts that bring beauty and warmth to your home. Each item is crafted with love, attention to detail, and high-quality materials.</p>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div id="products" class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex space-x-4 overflow-x-auto">
+                <button onclick="filterByCategory('All')" class="cat-btn px-6 py-2 rounded-full bg-purple-600 text-white">All</button>
+                <button onclick="filterByCategory('Paintings')" class="cat-btn px-6 py-2 rounded-full bg-gray-100">Paintings</button>
+                <button onclick="filterByCategory('Resin Arts')" class="cat-btn px-6 py-2 rounded-full bg-gray-100">Resin Arts</button>
+                <button onclick="filterByCategory('Home Decor')" class="cat-btn px-6 py-2 rounded-full bg-gray-100">Home Decor</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div id="noProducts" class="hidden text-center py-12 text-gray-500"><p class="text-xl">No products found</p></div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="bg-gradient-to-r from-purple-600 to-pink-500 py-12 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Join Our Creative Community</h2>
+        <p class="text-white mb-6">Get exclusive offers and new product updates!</p>
+        <form onsubmit="subscribe(event)" class="flex max-w-md mx-auto px-4 gap-3">
+            <input type="email" id="email" placeholder="Enter your email" required class="flex-1 px-4 py-3 rounded-lg">
+            <button type="submit" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold">Subscribe</button>
+        </form>
+        <p id="subscribeMsg" class="hidden text-white mt-4">Thank you! 🎉</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Ekaaya Creations</h3>
+                <p class="text-gray-400">Handcrafted with love, delivered with care.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#products" class="hover:text-white">Shop</a></li>
+                    <li><a href="https://wa.me/917440314280" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Policies</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white">Shipping Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Return Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Contact Us</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li>📞 +91 7440314280</li>
+                    <li>✉️ ekayaacreations@gmail.com</li>
+                    <li>📍 Pune, Maharashtra, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Ekaaya Creations. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50" onclick="toggleCart()">
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white overflow-y-auto" onclick="event.stopPropagation()">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Shopping Cart</h2>
+                    <button onclick="toggleCart()" class="text-2xl">×</button>
+                </div>
+                <div id="cartItems"><p class="text-gray-500 text-center py-8">Your cart is empty</p></div>
+                <div id="cartTotal" class="hidden border-t pt-4 mt-6">
+                    <div class="flex justify-between text-xl font-bold mb-4">
+                        <span>Total:</span>
+                        <span class="text-purple-600" id="totalAmount">₹0</span>
+                    </div>
+                    <a href="https://wa.me/917440314280?text=I%20want%20to%20place%20an%20order%20from%20Ekaaya%20Creations" target="_blank" class="block w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 mb-3 text-center">Order via WhatsApp</a>
+                    <p class="text-xs text-center text-gray-500">Cash on Delivery available • Free shipping above ₹999</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {id:1,name:'Abstract Canvas Painting',category:'Paintings',price:2499,image:'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=500',units:3,desc:'Vibrant abstract art perfect for modern spaces'},
+            {id:2,name:'Ocean Wave Resin Tray',category:'Resin Arts',price:1299,image:'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500',units:5,desc:'Beautiful blue wave pattern serving tray'},
+            {id:3,name:'Bohemian Wall Hanging',category:'Home Decor',price:899,image:'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=500',units:8,desc:'Handwoven macrame wall decoration'},
+            {id:4,name:'Sunset Landscape Painting',category:'Paintings',price:3299,image:'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500',units:2,desc:'Stunning sunset over mountains'},
+            {id:5,name:'Resin Coasters Set',category:'Resin Arts',price:599,image:'https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=500',units:12,desc:'Set of 4 marble-effect coasters'},
+            {id:6,name:'Ceramic Planter Set',category:'Home Decor',price:1199,image:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=500',units:6,desc:'Set of 3 decorative planters'},
+            {id:7,name:'Mandala Art Painting',category:'Paintings',price:1899,image:'https://images.unsplash.com/photo-1582201957543-2ab42fcef061?w=500',units:4,desc:'Intricate mandala design'},
+            {id:8,name:'Resin Jewelry Box',category:'Resin Arts',price:1599,image:'https://images.unsplash.com/photo-1611923134239-158929921dca?w=500',units:7,desc:'Elegant jewelry organizer'}
+        ];
+
+        let cart = [];
+        let currentCategory = 'All';
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const searchTerm = (document.getElementById('searchBox')?.value || document.getElementById('searchMobile')?.value || '').toLowerCase();
+            const filtered = products.filter(p => {
+                const matchCat = currentCategory === 'All' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchTerm) || p.desc.toLowerCase().includes(searchTerm);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                document.getElementById('noProducts').classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('noProducts').classList.add('hidden');
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-64 object-cover">
+                        ${p.units < 5 ? `<div class="absolute top-3 left-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm">Only ${p.units} left!</div>` : ''}
+                    </div>
+                    <div class="p-4">
+                        <div class="text-sm text-purple-600 font-semibold mb-1">${p.category}</div>
+                        <h3 class="font-bold text-lg mb-2">${p.name}</h3>
+                        <p class="text-gray-600 text-sm mb-3">${p.desc}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-600">₹${p.price}</span>
+                            <button onclick="addToCart(${p.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                cartTotal.classList.add('hidden');
+                cartCount.classList.add('hidden');
+            } else {
+                cartCount.classList.remove('hidden');
+                cartCount.textContent = count;
+                cartTotal.classList.remove('hidden');
+                document.getElementById('totalAmount').textContent = '₹' + total;
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center border-b pb-4 mb-4">
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded">
+                        <div class="ml-4 flex-1">
+                            <h3 class="font-semibold">${item.name}</h3>
+                            <p class="text-purple-600 font-bold">₹${item.price}</p>
+                            <div class="flex items-center mt-2 space-x-2">
+                                <button onclick="updateQty(${item.id},-1)" class="px-2 py-1 bg-gray-200 rounded">-</button>
+                                <span class="font-semibold">${item.quantity}</span>
+                                <button onclick="updateQty(${item.id},1)" class="px-2 py-1 bg-gray-200 rounded">+</button>
+                                <button onclick="removeFromCart(${item.id})" class="ml-auto text-red-500 text-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('hidden');
+        }
+
+        function filterByCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('bg-gray-100');
+            });
+            event.target.classList.add('bg-purple-600', 'text-white');
+            event.target.classList.remove('bg-gray-100');
+            renderProducts();
+        }
+
+        function filterProducts() {
+            renderProducts();
+        }
+
+        function subscribe(e) {
+            e.preventDefault();
+            document.getElementById('subscribeMsg').classList.remove('hidden');
+            document.getElementById('email').value = '';
+            setTimeout(() => {
+                document.getElementById('subscribeMsg').classList.add('hidden');
+            }, 3000);
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
